@@ -10,19 +10,22 @@ public class RoguePaladins : PhysicsGame
     const double Nopeus = 200;
     const double HyppyNopeus = 750;
     const int RUUDUN_KOKO = 40;
+    
 
     PlatformCharacter pelaaja1;
 
     Image pelaajanKuva = LoadImage("norsu");
     Image tahtiKuva = LoadImage("tahti");
+    Image vartijaKuva = LoadImage("vartija");
 
     SoundEffect maaliAani = LoadSoundEffect("maali");
 
     public override void Begin()
     {
         Gravity = new Vector(0, -1000);
+        int kenttaNro = 1;
 
-        LuoKentta();
+        LuoKentta(kenttaNro);
         LisaaNappaimet();
 
         Camera.Follow(pelaaja1);
@@ -30,12 +33,13 @@ public class RoguePaladins : PhysicsGame
         Camera.StayInLevel = true;
     }
 
-    void LuoKentta()
+    void LuoKentta(int kenttaNro)
     {
         TileMap kentta = TileMap.FromLevelAsset("kentta1");
         kentta.SetTileMethod('#', LisaaTaso);
         kentta.SetTileMethod('*', LisaaTahti);
         kentta.SetTileMethod('N', LisaaPelaaja);
+        kentta.SetTileMethod('V', LisaaVartija);
         kentta.Execute(RUUDUN_KOKO, RUUDUN_KOKO);
         Level.CreateBorders();
         Level.Background.CreateGradient(Color.White, Color.SkyBlue);
@@ -67,6 +71,15 @@ public class RoguePaladins : PhysicsGame
         pelaaja1.Image = pelaajanKuva;
         AddCollisionHandler(pelaaja1, "tahti", TormaaTahteen);
         Add(pelaaja1);
+    }
+
+    void LisaaVartija(Vector paikka, double leveys, double korkeus)
+    {
+        PhysicsObject vihuVartija = PhysicsObject.CreateStaticObject(leveys, korkeus);
+        vihuVartija.Position = paikka;
+        vihuVartija.Mass = 4.0;
+        vihuVartija.Image = vartijaKuva;
+        Add(vihuVartija);
     }
 
     void LisaaNappaimet()
@@ -103,4 +116,15 @@ public class RoguePaladins : PhysicsGame
         MessageDisplay.Add("Keräsit tähden!");
         tahti.Destroy();
     }
+
+   /* void SeuraavaKentta()
+    {
+        ClearAll();
+        if (kenttaNro > 3) //Tähän kolmosen kohdalle tulee kenttien lukumäärä
+        else LuoKentta("kentta "+kenttaNro);
+        //Jotta tämä toimisi, pitää jokaisen kenttätiedoston nimen
+        //olla muotoa kentta ja heti perään numero esimerkiksi kentta4.txt
+
+        AsetaOhjaimet();
+    }*/
 }
