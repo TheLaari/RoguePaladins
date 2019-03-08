@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>U:/kurssit/k2019/itkp102/ht/ht/project/RoguePaladins/RoguePaladins/Content/maali.wav</SourceFile>
+  <SourceTime>2019-03-08T15:38:18+02:00</SourceTime>
+  <DestFile>U:/kurssit/k2019/itkp102/ht/ht/project/RoguePaladins/RoguePaladins/Content/bin/Windows/maali.xnb</DestFile>
+  <DestTime>2019-03-08T16:01:21+02:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2018-12-08T18:35:54+02:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2018-12-08T18:35:54+02:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
