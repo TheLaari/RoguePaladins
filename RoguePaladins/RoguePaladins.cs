@@ -14,7 +14,7 @@ public class RoguePaladins : PhysicsGame
 
     PlatformCharacter pelaaja1;
 
-    Image pelaajanKuva = LoadImage("norsu");
+    Image pelaajanKuva = LoadImage("jeanele");
     Image tahtiKuva = LoadImage("tahti");
     Image vartijaKuva = LoadImage("vartija");
 
@@ -42,7 +42,7 @@ public class RoguePaladins : PhysicsGame
         kentta.SetTileMethod('V', LisaaVartija);
         kentta.Execute(RUUDUN_KOKO, RUUDUN_KOKO);
         Level.CreateBorders();
-        Level.Background.CreateGradient(Color.White, Color.SkyBlue);
+        Level.Background.CreateGradient(Color.White, Color.Red);
     }
 
     void LisaaTaso(Vector paikka, double leveys, double korkeus)
@@ -76,6 +76,7 @@ public class RoguePaladins : PhysicsGame
     void LisaaVartija(Vector paikka, double leveys, double korkeus)
     {
         PhysicsObject vihuVartija = PhysicsObject.CreateStaticObject(leveys, korkeus);
+        FollowerBrain vartijanAivot = new FollowerBrain(pelaaja1);
         vihuVartija.Position = paikka;
         vihuVartija.Mass = 4.0;
         vihuVartija.Image = vartijaKuva;
@@ -116,6 +117,9 @@ public class RoguePaladins : PhysicsGame
         MessageDisplay.Add("Keräsit tähden!");
         tahti.Destroy();
     }
+
+    void MeleeHyokkays(PhysicsObject hahmo, PhysicsObject );
+
 
    /* void SeuraavaKentta()
     {
